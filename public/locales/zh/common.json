@@ -1,0 +1,21 @@
+{
+  "apy": "年化利率",
+  "gasPrices": {
+    "slow": "慢",
+    "standard": "标准",
+    "fast": "快"
+  },
+  "nav": {
+    "index": "主页",
+    "test": "测试",
+    "list": "列表"
+  },
+  "theme": {
+    "light": "明亮",
+    "dark": "暗黑",
+    "pick": "选择主题"
+  },
+  "actions": {
+    "close": "关闭"
+  }
+}

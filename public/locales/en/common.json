@@ -1,0 +1,21 @@
+{
+  "apy":"APY",
+  "gasPrices":{
+    "slow":"slow",
+    "standard":"standard",
+    "fast":"fast"
+  },
+  "nav": {
+    "index": "index",
+    "test": "test",
+    "list": "list"
+  },
+  "theme":{
+    "light":"light",
+    "dark":"dark",
+    "pick":"pick theme"
+  },
+  "actions":{
+    "close":"close"
+  }
+}
