@@ -1,5 +1,4 @@
 import { FC, ReactEventHandler, useState } from 'react';
-import Link from 'next/link';
 import { CustomLink } from './Link';
 import { useRouter } from 'next/router';
 

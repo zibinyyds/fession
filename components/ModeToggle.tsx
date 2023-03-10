@@ -11,15 +11,6 @@ export default function ModeToggle() {
     return mode === 'light';
   }, [mode]);
 
-  // const [mounted, setMounted] = useState(false);
-  // useEffect(() => {
-  //   setMounted(true);
-  // }, []);
-
-  // if (!mounted) {
-  //   return null;
-  // }
-
   return (
     <IconButton
       variant="soft"

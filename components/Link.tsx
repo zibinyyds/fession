@@ -1,8 +1,6 @@
 import { Link } from '@mui/joy';
 import { FC, ReactNode } from 'react';
 import { useRouter } from 'next/router';
-// import { Url } from 'next';
-
 
 type Locale = 'zh' | 'cn';
 
