@@ -1,9 +1,11 @@
-import { FC, useEffect } from "react";
-import type { NextPage } from "next";
-import type { AppProps } from "next/app";
-import { useRouter } from "next/router";
-import TopNavbar from "@/components/TopNavbar";
-import ErrorBoundary from "@/components/ErrorBoundary";
+import { FC, useEffect } from 'react';
+import type { NextPage } from 'next';
+import type { AppProps } from 'next/app';
+import { useRouter } from 'next/router';
+import TopNavbar from '@/components/TopNavbar';
+import { CssVarsProvider } from '@mui/joy/styles';
+import { Card } from '@mui/joy';
+import ColorInversionNavigation from '@/components/Sider';
 
 type Page<P = {}> = NextPage<P> & {
   PageTitle?: FC;
@@ -15,22 +17,33 @@ type Props = AppProps & {
 
 const Layout: FC<Props> = ({ Component, pageProps }) => {
   const PageTitle = Component.PageTitle ?? (() => <></>);
-  const { asPath } = useRouter();
-
-  useEffect(() => {
-    document.querySelector("body")!.classList.remove("classic");
-  }, []);
-
   return (
-
-        <main className="sm:pl-64 bg-background-light">
-          <div className="px-4 py-2 sm:px-10 sm:py-10 text-foreground">
-            <TopNavbar PageTitle={PageTitle} />
-            <ErrorBoundary key={asPath}>
-              <Component {...pageProps} />
-            </ErrorBoundary>
+    <CssVarsProvider>
+      <Card
+        orientation="horizontal"
+        sx={{
+          height: '100%',
+          width: '100%',
+          margin: '0',
+          padding: '0',
+          variant: 'soft',
+          position: 'fixed',
+          zIndex: 1,
+        }}
+      >
+        <ColorInversionNavigation />
+        <div
+          style={{
+            width: '100%',
+          }}
+        >
+          <TopNavbar PageTitle={PageTitle} />
+          <div className="p-24">
+            <Component {...pageProps} />
           </div>
-        </main>
+        </div>
+      </Card>
+    </CssVarsProvider>
   );
 };
 

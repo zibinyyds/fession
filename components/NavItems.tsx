@@ -1,43 +1,37 @@
-import { FC, MouseEventHandler } from "react";
-import {
-  BoltSlashIcon,
-  TruckIcon,
-  UserGroupIcon,
-} from "@heroicons/react/24/solid";
-import { useTranslation } from "next-i18next";
+import { FC, MouseEventHandler } from 'react';
+import { PieChart } from '@mui/icons-material';
+import { useTranslation } from 'next-i18next';
+import { useRouter } from 'next/router';
 
-import NavItem from "./NavItem";
+import NavItem from './NavItem';
 
 interface Props {
   onClick?: MouseEventHandler;
 }
 
 const NavItems: FC<Props> = ({ onClick }) => {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation('common');
+  const { basePath, pathname } = useRouter();
+  console.log(basePath, pathname);
 
   const navigation = [
-    { name: t("nav.index"), href: "/", icon: TruckIcon },
+    { name: t('nav.index'), href: '/', icon: <PieChart /> },
     {
-      name: t("nav.list"),
-      href: "/list",
-      icon: BoltSlashIcon,
+      name: t('nav.list'),
+      href: '/list',
+      icon: <PieChart />,
     },
-    { name: t("nav.test"), href: "/test", icon: UserGroupIcon },
+    { name: t('nav.test'), href: '/test', icon: <PieChart /> },
   ];
 
   return (
-    <nav className="flex-1 space-y-2">
-      {navigation.map((item) => (
-        <NavItem
-          key={item.name}
-          Icon={item.icon}
-          href={item.href}
-          onClick={onClick}
-        >
+    <>
+      {navigation.map(item => (
+        <NavItem key={item.name} icon={item.icon} href={item.href} onClick={onClick} selected={pathname === item.href}>
           {item.name}
         </NavItem>
       ))}
-    </nav>
+    </>
   );
 };
 

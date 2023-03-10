@@ -20,6 +20,3 @@ function Test() {
     </>
   );
 }
-
-export { getStaticProps } from '@/utils/locales';
-export default Test;

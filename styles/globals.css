@@ -1,2 +1,6 @@
-@import './tailwind.css';
-@import './custom.css'
+@import './padding.css';
+
+body{
+    padding: 0;
+    margin: 0;
+}

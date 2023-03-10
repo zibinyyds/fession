@@ -1,24 +1,26 @@
-import "@/styles/globals.css";
-import { appWithTranslation } from "next-i18next";
-import type { AppProps } from "next/app";
-import Head from "next/head";
-import Layout from "@/layouts/Layout";
-import { useTranslation } from "next-i18next";
+import '@/styles/globals.css';
+import '@fontsource/public-sans';
+import { appWithTranslation } from 'next-i18next';
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
+import Layout from '@/layouts/Layout';
+import { useTranslation } from 'next-i18next';
+import { Web3ReactProvider } from '@web3-react/core';
+import { Web3Provider, EtherscanProvider } from '@ethersproject/providers';
+
+function getLibrary(provider: any): Web3Provider {
+  const library = new Web3Provider(provider);
+  return library;
+}
 
 const App = (props: AppProps) => {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation('common');
 
   return (
-    <>
-      <Head>
-        <title>{t("meta.titleFull")}</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
+    <Web3ReactProvider getLibrary={getLibrary}>
       <Layout {...props} />
-    </>
+    </Web3ReactProvider>
   );
 };
-
 
 export default appWithTranslation(App);
