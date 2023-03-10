@@ -1,13 +1,11 @@
 import { Link } from '@mui/joy';
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode, MouseEvent } from 'react';
 import { useRouter } from 'next/router';
 
-type Locale = 'zh' | 'cn';
-
 interface Props {
-  href?: Url;
-  locale?: Locale;
-  children: ReactNode
+  href?: any;
+  locale?: string;
+  children: ReactNode;
 }
 
 export const CustomLink: FC<Props> = ({ children, href, locale }) => {
@@ -17,7 +15,7 @@ export const CustomLink: FC<Props> = ({ children, href, locale }) => {
     color: router.asPath === href ? 'red' : 'black',
   };
 
-  const handleClick = e => {
+  const handleClick = (e: MouseEvent) => {
     e.preventDefault();
     router.push(href, undefined, { locale });
   };

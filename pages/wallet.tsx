@@ -2,7 +2,6 @@ import Head from 'next/head';
 
 import { useTranslation } from 'next-i18next';
 
-
 function Test() {
   const { t } = useTranslation('common');
   return (
@@ -20,3 +19,4 @@ function Test() {
     </>
   );
 }
+export default Test;
